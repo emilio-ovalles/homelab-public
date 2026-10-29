@@ -41,6 +41,7 @@ flowchart TD
     subgraph homelabvlan["Homelab VLAN (40)"]
         air[Media Server]
         pro[App Server]
+        pve[Proxmox Host]
     end
 
     wan --> cgu
@@ -50,6 +51,7 @@ flowchart TD
     switch --> ha
     switch --> air
     switch --> pro
+    switch --> pve
     ap1 --- |Mesh Uplink| ap2
     ap1 --> printer
     ap1 --> iot
@@ -97,6 +99,12 @@ Ubuntu Server OS. Running self-hosted apps/services:
 - Development todo list app (PWA, API/DB)
 - Memos
 - SilverBullet
+
+### Dell Optiplex 5080
+Proxmox VE hypervisor. Intel Core i5-10500T (6 cores / 12 threads), 32 GB RAM, 512 GB NVMe.
+- **Wazuh** (long-lived VM): SIEM, with agents on the two Ubuntu servers.
+- **Lab VMs** (short-lived): cloned from cloud-init templates for testing and labs, such as the Active Directory lab. Built with the scripts in [`proxmox/`](proxmox/).
+
 
 ## Remote Access
 
